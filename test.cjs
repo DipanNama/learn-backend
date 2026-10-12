@@ -1,0 +1,11 @@
+const t=require('node:test'),a=require('node:assert/strict'),f=require('node:fs'),s=require('./site/explorer'),data=require('./site/fixture.json');
+t('fixture original records',()=>{a.equal(data.length,11);const original=f.readFileSync('backend/data.js','utf8');for(const x of data)a.ok(original.includes('"'+x.title+'"'));});
+t('filter case insensitive',()=>a.equal(s.filter(data,'JOKE 1').length,3));
+t('blank filter',()=>a.equal(s.filter(data,' ').length,11));
+t('empty result',()=>a.equal(s.filter(data,'missing').length,0));
+t('no mutation',()=>{const old=JSON.stringify(data);s.filter(data,'1');a.equal(JSON.stringify(data),old);});
+t('bad fixture',()=>{for(const x of [null,{},[{id:'1',title:'x'}],[{id:1,title:4}],Array(101).fill({id:1,title:'x'})])a.throws(()=>s.validate(x));});
+t('bad query',()=>{a.throws(()=>s.filter(data,'x'.repeat(101)));a.throws(()=>s.filter(data,null));});
+t('keeps values as text data',()=>a.equal(s.validate([{id:1,title:'<img onerror=alert(1)>'}])[0].title,'<img onerror=alert(1)>'));
+t('effect mount/cleanup',()=>{const text=f.readFileSync('frontend/src/App.jsx','utf8');a.ok(text.includes('}, [])'));a.ok(text.includes('controller.abort()'));});
+t('main only',()=>{const text=f.readFileSync('.github/workflows/pages.yml','utf8');a.ok(text.includes('branches: [main]'));a.ok(!text.includes('workflow_dispatch'));});

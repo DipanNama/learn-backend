@@ -1,0 +1,65 @@
+<!doctype html><html lang="en" class="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A static response explorer for a beginner Express API fixture. No hosted backend or external data requests."><title>Learn Backend - Response Explorer</title><link rel="stylesheet" href="style.css"></head><body><main><header><div class="brand">Learn Backend <span>by Dipan Nama</span></div><button id="theme" aria-label="Switch color theme"><span class="tile"><!-- @license lucide-static v1.54.0 - ISC -->
+<svg class="icon"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+</span></button></header><section class="intro"><span class="pill">Static API explorer</span><h1>A request. A response. A little clarity.</h1><p>Explore the original learning fixture without a running server.</p></section><section class="layout"><div class="frame"><form id="form" class="inner"><h2>Inspect the response.</h2><label for="query">Filter by title</label><input id="query" maxlength="100" placeholder="Try joke 1"><label>Original Express route</label><code>GET /api/jokes</code><button class="primary" type="submit">Load fixture <span class="tile"><!-- @license lucide-static v1.54.0 - ISC -->
+<svg class="icon"
+  class="lucide lucide-arrow-up-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M7 7h10v10" />
+  <path d="M7 17 17 7" />
+</svg>
+</span></button><button class="secondary" type="button" id="fail">Try an error state</button><p class="hint">This Pages demo reads local JSON, not a live API. The eleven titles are the repo's original placeholder records.</p><div id="notice" class="notice" role="status" aria-live="polite"></div></form></div><div><div class="result-head"><h2>Response body</h2><span class="badge" id="status">Ready</span></div><div class="buttons"><button id="copy">Copy JSON <span class="tile"><!-- @license lucide-static v1.54.0 - ISC -->
+<svg class="icon"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span></button><button id="export">Export JSON <span class="tile"><!-- @license lucide-static v1.54.0 - ISC -->
+<svg class="icon"
+  class="lucide lucide-download"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 15V3" />
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <path d="m7 10 5 5 5-5" />
+</svg>
+</span></button></div><div id="loading" class="skeleton" hidden aria-label="Loading fixture"></div><div class="response" id="response"><pre id="json">Load the local fixture to inspect its JSON.</pre></div><div class="records" id="records"></div></div></section><section class="notes"><div><strong>Local data, honest scope</strong><p>The demo is static. Express source remains in the repo for local development; no backend is deployed on Pages.</p></div><div><strong>Mount once, not every render</strong><p>The React client now fetches on mount with cleanup. Development Strict Mode can replay effects, but state updates no longer start a request loop.</p></div><div><strong>Useful response states</strong><p>Explore loading, data, empty results and a simulated error. Filtering happens in this tab, not on a server.</p></div></section><div class="divider"></div><footer><span>Built by Dipan Nama. Only theme is saved.</span><a href="https://github.com/DipanNama/learn-backend" target="_blank" rel="noopener noreferrer">Source & local backend</a></footer></main><script src="explorer.js"></script><script src="app.js"></script></body></html>
